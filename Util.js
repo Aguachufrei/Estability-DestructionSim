@@ -61,6 +61,23 @@ function mergeSortByDistance(arr, left, right) {
     // Merge both sorted parts
     merge(arr, left, middle, right);
 }
+
+function insertionSort(arr) {
+    for (let i = 1; i < arr.length; i++) {
+        let key = arr[i];
+        let j = i - 1;
+
+        // Mover los elementos de arr[0..i-1] que son mayores que key
+        // una posición adelante de su posición actual
+        while (j >= 0 && arr[j][2] > key[2]) {
+            arr[j + 1] = arr[j];
+            j = j - 1;
+        }
+        arr[j + 1] = key;
+    }
+    return arr;
+}
+
 function cloneArray(array) {
     return array.map(subarray => [...subarray]); // Proper deep copy
 }
